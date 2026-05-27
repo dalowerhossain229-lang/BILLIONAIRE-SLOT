@@ -25,7 +25,7 @@ app.use((req, res, next) => {
 });
 
 // 🎰 [উইনগো কালার ট্রেড ওরিজিনাল ডোমেইন সিঙ্ক]
-const MAIN_SITE_URL = "https://onrender.com"; 
+const MAIN_SITE_URL = "https://betlover247.onrender.com"; 
 
 // ৩x৫ গ্রিডের ওরিজিনাল বিলিয়নেয়ার লাক স্লট আইকন মেমোরি পুল ভাই ভাই
 const slotSymbolsPool = ["TAJMAHAL", "AUTO", "BACKPACK", "FOOD", "BOY", "ACE", "KING", "QUEEN"];
