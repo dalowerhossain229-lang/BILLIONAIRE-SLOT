@@ -23,7 +23,7 @@ app.use((req, res, next) => {
 });
 
 // 🎰 [উইনগো কালার ট্রেড ওরিজিনাল ডোমেইন সিঙ্ক ভাই ভাই]
-const MAIN_SITE_URL = "https://onrender.com"; 
+const MAIN_SITE_URL = "https://betlover247.onrender.com"; 
 
 // 🕌 ওরিজিনাল বিলিয়নেয়ার ৩x৫ স্লটের প্রিমিয়াম এশিয়ান সিম্বল ম্যাট্রিক্স পুল
 const billionaireSymbolsList = ["MOSQUE", "CNG", "BAG", "COIN", "BOY", "CARD_A", "CARD_K"];
@@ -193,5 +193,5 @@ app.get('/', (req, res) => { res.sendFile(path.resolve(__dirname, 'index.html'))
 io.on('connection', (socket) => {});
 
 // ⚡ কাস্টম নোড সার্ভার পোর্ট গেটওয়ে লাইভ অন ফায়ার (৪০০০০ পোর্টে ডেডিকেটেড সিঙ্ক লক!)
-const PORT = process.env.PORT || 40000; 
+const PORT = process.env.PORT || 37000; 
 server.listen(PORT, () => { console.log(`🕌 Billionaire Asian 3x5 Slot Engine Running on port ${PORT}`); });
