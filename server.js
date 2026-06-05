@@ -101,9 +101,8 @@ app.post('/api/billionaire-spin', async (req, res) => {
             let maxMatchesCount = Math.max(...Object.values(matchCountsMap));
             let matchedSymbolName = Object.keys(matchCountsMap).find(key => matchCountsMap[key] === maxMatchesCount);
 
-            // ৩x৫ স্লট আন্তর্জাতিক লাক্সারি পে-আউট ওッズ বিন্যাস সিঙ্ক ওস্তাদ
+                        // ৩x৫ স্লট আন্তর্জাতিক লাক্সারি পে-আউট ওッズ বিন্যাস সিঙ্ক ওস্তাদ (আপনার ওরিজিনাল ওッズ)
             if (maxMatchesCount === 5) {
-                // ৫টি রিল কাটায় কাটায় হুবহু মিলে গেলে মেগা লাক্সারি জ্যাকপট! (আপনার স্ক্রিনশটের মাঝখানের লাইনের মতো কম্বো!)
                 if (matchedSymbolName === "MOSQUE") winMultiplier = 50.00;      // ৫ মসজিদ ৫০ গুণ মেগা জ্যাকপট!
                 else if (matchedSymbolName === "CNG") winMultiplier = 25.00;     // ৫ সিএনজি ২৫ গুণ
                 else if (matchedSymbolName === "BAG") winMultiplier = 20.00;     // ৫ স্কুল ব্যাগ ২০ গুণ
@@ -118,12 +117,15 @@ app.post('/api/billionaire-spin', async (req, res) => {
                 winMultiplier = (matchedSymbolName === "MOSQUE") ? 2.50 : 1.50;
                 finalStatus = "win";
             } else if (maxMatchesCount === 2) {
-                winMultiplier = 0.50; 
-                finalStatus = "lose";
+                // 🔴 বাগ ফিক্স লক: ২টি ম্যাচ মিললে যেহেতু লস হবে, তাই গুণিতক অবশ্যই ০.০০ হতে হবে।
+                // আগে এখানে ০.৫০ থাকার কারণে বাজির অর্ধেক টাকা ডেটাবেজে ফেরত চলে যেত, ফলে ব্যালেন্স অর্ধেক কাটত।
+                winMultiplier = 0.00; 
+                finalStatus = "lose"; 
             } else {
                 winMultiplier = 0.00;
                 finalStatus = "lose";
             }
+
 
             // এডমিন প্যানেল কাস্টম ফোর্স কন্ট্রোল নব ফিল্টারিং চ্যাম
             if (balResponse.data && balResponse.data.billionaire_target) {
